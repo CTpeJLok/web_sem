@@ -1,0 +1,53 @@
+.grid {
+    display: grid;
+    gap: 20px;
+    place-items: center;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.item {
+    display: flex;
+    flex: 1 1 auto;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+
+    height: 100%;
+
+    text-decoration: none;
+    color: black;
+    
+}
+
+.item p {
+    align-self: center;
+    max-width: 80%;
+    word-break: break-all;
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.item p:first-of-type {
+    color: #555;
+    font-weight: 700;
+}
+
+.item_content {
+    overflow: hidden;
+    border-radius: 20px;
+    width: 30vw;
+    height: 20vw;
+}
+
+.item_content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
