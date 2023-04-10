@@ -1,0 +1,267 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas {
+    width: 1100px;
+    display: flex;
+    justify-content: space-around;
+    align-items:flex-end;
+    min-height: 800px;
+    background-color: #41e3f8;
+}
+
+.grass {
+    height: 20px;
+    width: 100vw;
+    background-color: #4bf520;
+}
+
+.trunk,
+.branch {
+  border-radius: 25px;
+  background: linear-gradient(to right, #7f3333, #4d2020);
+}
+
+.trunk {
+    position: relative;
+    
+    width: 10px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.branch {
+    position: absolute;
+    width: 5px;
+}
+
+.branch:nth-child(even) {
+    transform: rotate(60deg);
+}
+
+.branch:nth-child(odd) {
+    transform: rotate(-60deg);
+}
+
+.branch {
+    position: absolute;
+    width: 5px;
+    transform-origin: bottom center;
+}
+
+.branch:nth-child(1) {
+    top: 100px;
+    height: 180px;
+}
+.branch:nth-child(2) {
+    left: 5px;
+    top: 80px;
+    height: 150px;
+}
+.branch:nth-child(3) {
+    top: 40px;
+    height: 150px;
+}
+.branch:nth-child(4) {
+    left: 5px;
+    top: 0;
+    height: 150px;
+}
+
+.leaf {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 75% 0 75% 0;
+    background: linear-gradient(to right, #77ed9e, #53ad71);
+}
+
+@keyframes leaf-odd-grow {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+
+.leaf:nth-child(odd) {
+    left: 100%;
+    transform-origin: 0% 100%;
+    animation-name: leaf-odd-grow;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+}
+
+@keyframes leaf-even-grow {
+    0% {
+      transform: rotate(-90deg) scale(0);
+    }
+    50% {
+        transform: rotate(-90deg) scale(1.5);
+    }
+    100% {
+      transform: rotate(-90deg) scale(1);
+    }
+  }
+
+.leaf:nth-child(even) {  
+    left: -150%;
+    transform-origin: 50% 100%;
+    animation-name: leaf-even-grow;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+}
+
+.fruit {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #ed7777, #ad5353);
+
+    top: 110px;
+}
+
+.branch:nth-child(odd) .fruit {
+    left: -150%;
+    transform-origin: 50% 100%;
+    animation-name: leaf-even-grow;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+}
+
+.branch:nth-child(even) .fruit {
+    left: 100%;
+    transform-origin: 0% 100%;
+    animation-name: leaf-odd-grow;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+}
+
+.tree:nth-child(2) .branch:nth-child(2) .fruit:nth-child(6) {
+    top: 80px;
+}
+
+.tree:nth-child(2) .branch:nth-child(2) .fruit:nth-child(7) {
+    top: 50px;
+}
+
+.tree:nth-child(2) .branch:nth-child(3) .fruit:nth-child(4) {
+    top: 50px;
+}
+
+.tree:nth-child(3) .branch:nth-child(4) .fruit:nth-child(4) {
+    top: 50px;
+}
+
+.leaf:nth-child(1) {
+    top: 5px;
+    animation-delay: 3.5s;
+}
+.leaf:nth-child(2) {
+    top: 20px;
+    animation-delay: 3s;
+}
+.leaf:nth-child(3) {
+    top: 40;
+    animation-delay: 2.5s;
+}
+.leaf:nth-child(4) {
+    top: 75px;
+    animation-delay: 2s;
+}
+.leaf:nth-child(5) {
+    top: 90px;
+    animation-delay: 1.5s;
+}
+
+@keyframes myOrbit {
+    0% {
+        visibility: visible;
+        transform: rotate(180deg) translateX(700px);
+    }
+    50% {
+        transform: rotate(270deg) translateX(550px);
+    }
+    90% {
+        transform: rotate(340deg) translateX(550px);
+    }
+    100% {
+        transform: rotate(360deg) translateX(600px);
+    }
+}
+
+.sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    background: #fbff14;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+    animation: myOrbit 4s linear infinite;
+}
+
+.moon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    background: #505050;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+    visibility: hidden;
+
+    animation: myOrbit 4s linear infinite;
+    animation-delay: 2s;
+}
+
+.star {
+    top: 15px;
+    display: inline-block;
+    vertical-align: top;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(to bottom, rgb(255, 64, 64) 0%, rgb(255, 51, 51) 100%);
+    position: relative;
+    z-index: 10;
+  }
+  
+  .star:before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    right: 1px;
+    background: linear-gradient(to bottom, rgb(255, 64, 64) 0%, rgb(255, 51, 51) 100%);
+    z-index: 11;
+  }
+  
+  .star,
+  .star:before {
+    -webkit-clip-path: polygon(50% 0%, 66% 27%, 98% 35%, 76% 57%, 79% 91%, 50% 78%, 21% 91%, 24% 57%, 2% 35%, 32% 27%);
+    clip-path: polygon(50% 0%, 66% 27%, 98% 35%, 76% 57%, 79% 91%, 50% 78%, 21% 91%, 24% 57%, 2% 35%, 32% 27%);
+  }
