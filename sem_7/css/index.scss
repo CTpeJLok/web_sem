@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+$font-stack: 'Roboto', sans-serif;
+$primary-color: #333;
+$second-color: #777;
+$action-color: #EB8C70;
+
+@mixin flex($jc, $ai, $gap) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    gap: $gap;
+}
+
+@mixin flex_c($jc, $ai, $gap) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $jc;
+    align-items: $ai;
+    gap: $gap;
+}
+
+@mixin link($color) {
+    text-decoration: none;
+    color: $color;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+@mixin button($bg, $pdng, $border) {
+    background: $bg;
+    border: $border;
+    padding: $pdng;
+    cursor: pointer;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font: 100% $font-stack;
+}
+
+body {
+  min-height: 100vh;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background: white;
+
+    height: 60px;
+    padding: 0px 5% 0px 5%;
+
+    @include flex(space-between, center, 10px);
+
+    .logo {
+        @include flex(center, center, 10px);
+    }
+
+    nav {
+        flex: 1 1 auto;
+
+        ul {
+            @include flex(flex-end, center, 20px);
+
+            list-style: none;
+
+            a {
+                @include link($primary-color);
+            }
+
+            a::after {
+                position: absolute;
+                content: '';
+                width: 5px;
+                height: 5px;
+                background: orange;
+                transition: 0.5s;
+                transform: translateX(-100%) translateY(20px);
+                opacity: 0;
+            }
+
+            a:hover:after {
+                opacity: 1;
+            }
+
+            li:nth-child(5) a::after {
+                width: 0px;
+                height: 0px;
+            }
+
+            li:nth-child(5) {
+                @include button(white, 5px 10px, 2px solid black);
+            }
+        }
+    }
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    height: 100vh;
+    width: 100%;
+
+    .image {
+        img {
+            width: 50vw;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .text {
+        @include flex_c(center, flex-start, 15px);
+        padding: 5%;
+
+        .main {
+            color: $primary-color;
+            font-size: 2em;
+        }
+
+        .description {
+            color: $second-color;
+        }
+
+        .buttons {
+            @include flex(center, center, 20px);
+
+            a.view {
+                @include link($primary-color);
+                @include button(white, 20px 50px, 2px solid black);
+            }
+
+            a.try {
+                @include link(white);
+                @include button($action-color, 20px 50px, 2px solid $action-color);
+                white-space: nowrap;
+            }
+        }
+    }
+}
