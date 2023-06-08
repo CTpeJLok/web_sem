@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    let n = prompt('1) Введите число');
+    console.log('1: ' + n);
+</script>
+
+<script>
+    let n1 = prompt('2) Введите первое число');
+    let o = prompt('2) Введите операцию (+, -, *. /)');
+    let n2 = prompt('2) Введите второе число');
+    let res = 0;
+
+    if (o == '+')
+        res = n1 + n2;
+    else if (o == '-')
+        res = n1 - n2;
+    else if (o == '*')
+        res = n1 * n2;
+    else if (o == '/')
+        res = n1 / n2;
+    else
+        res = n1 + n2;
+
+    console.log('2: ' + res);
+</script>
+
+<script>
+    res = prompt('3) Введите число');
+    res -= 7;
+    res /= 2;
+    console.log('3: ' + res)
+</script>
+
+<script>
+    let name = prompt('4) Введите имя');
+    let year = prompt('4) Введите год рождения');
+    document.write(name + ':' + (new Date().getFullYear() - year));
+</script>
+
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+
+<!-- JS -->
+<script>
+    let arr1 = [1, 2, 3];
+    let arr2 = [];
+    for(let i = 0; i < arr1.length; i++) {
+        arr2.push(arr1[i] * 2);
+    }
+
+    console.log(arr2);
+</script>
+
+<script>
+    arr1 = [1, 2, 3];
+    arr2 = arr1.map(function(item) {
+        return item * 2;
+    });
+    console.log(arr2);
+</script>
+
+<script>
+    document.querySelector('body').innerHTML += '<p>1: ' + arr1.map((x) => (x + 10) * 3);
+</script>
+
+<script>
+    let years = [2000, 2005, 1998]
+    document.querySelector('body').innerHTML += '<p>2: ' + years.map((x) => new Date().getFullYear() - x);
+</script>
+
+<script>
+    const persons = [
+        { name: 'Peter', age: 16, admin: false },
+        { name: 'Mark', age: 18, admin: true },
+        { name: 'John', age: 27, admin: false },
+        { name: 'Jane', age: 14, admin: false },
+        { name: 'Tony', age: 24, admin: true },
+    ];
+    const fullAge = persons.filter(person => person.admin == true);
+    console.log(fullAge);
+    document.querySelector('body').innerHTML += '<p>3: ' + fullAge.map((x) => x.name);
+</script>
+
+<script>
+    const studentsScores = [80, 90, 70, 85, 95];
+    const sum = studentsScores.reduce(function(accumulator, currentValue) {
+        return accumulator + currentValue;
+    });
+    const average = sum / studentsScores.length;
+    document.querySelector('body').innerHTML += '<p>4: ' + average;
+</script>
+
+<script>
+    const strArray = ['JavaScript', 'Python', 'PHP', 'Java', 'C'];
+
+    function mapForEach(arr, fn) {
+        const newArray = [];
+        for(let i = 0; i < arr.length; i++) {
+            newArray.push(
+                fn(arr[i])
+            );
+        }
+        return newArray;
+    }
+
+    const lenArray = mapForEach(strArray, function(item) {
+        return item.length > 3 ? 1 : 0;
+    });
+    document.querySelector('body').innerHTML += '<p>5: ' + lenArray;
+</script>
+
+</html>

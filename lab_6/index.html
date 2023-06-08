@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            width: 100%;
+            text-align: center;
+        }
+
+        input {
+            width: 50%;
+        }
+    </style>
+
+</head>
+<body>
+    <p class="task1"></p>
+    <p class="task3"></p>
+    <p class="task4"></p>
+    <p class="task5"></p>
+    <p class="task6"></p>
+    <p class="task7"></p>
+</body>
+
+<!-- JS -->
+<!-- 1 -->
+<script>
+    let plus = (a, b) => {
+        return a + b;
+    };
+
+    let minus = (a, b) => {
+        return a - b;
+    };
+
+    document.querySelector('.task1').innerHTML += 'Task 1: 2 + 3 = ' + plus(2, 3);
+    document.querySelector('.task1').innerHTML += '<br>2 - 3 = ' + minus(2, 3);
+</script>
+
+<!-- 2 -->
+<script>
+    color = 'Red';
+
+    let isGreen = (color == 'Green') ? () => alert('Task 2: True') : () => alert('Task 2: False');
+
+    isGreen();
+</script>
+
+<!-- 3 -->
+<script>
+    let word = 'Test';
+
+    let isPalindrom = (str) => {
+        for (i = 0; i < word.length; i++) {
+            if (word[i] != word[word.length - 1 - i])
+                return false;
+        }
+
+        return true
+    };
+
+    document.querySelector('.task3').innerHTML += 'Task 3: ' + word + ' : ' + isPalindrom(word);
+</script>
+
+<!-- 4 -->
+<script>
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    let arr = []
+    for (i = 0; i < getRandomInt(11, 20 + 1); i++)
+        arr[i] = getRandomInt(-10, 10 + 1);
+    
+    let sum = arr.reduce((a, b) => a + b);
+
+    document.querySelector('.task4').innerHTML += 'Task 4:<br>' + arr + '<br>' + sum;    
+</script>
+
+<!-- 5 -->
+<script>
+    let msPerDay = 24 * 60 * 60 * 1000;
+    let today = new Date();
+    let ng = new Date('December 31, 2023');
+    let result = Math.round((ng.getTime() - today.getTime()) / msPerDay);
+
+    document.querySelector('.task5').innerHTML += 'Task 5: ' + result;
+</script>
+
+<!-- 6 -->
+<script>
+    let n = () => {};
+    document.querySelector('.task6').innerHTML += 'Task 6: ' + n();
+</script>
+
+<!-- 7 -->
+<script>
+    arr = []
+    for (i = 0; i < getRandomInt(11, 20 + 1); i++)
+        arr[i] = getRandomInt(-10, 10 + 1);
+    
+
+    document.querySelector('.task7').innerHTML += 'Task 7: ' + arr + '<br>';
+
+    sum = arr.reduce((a, b) => a + b);
+    let chetnie = arr.map(i => i % 2 == 0);
+    arr = arr.map(i => i * i)
+
+    document.querySelector('.task7').innerHTML += 'sum: ' + sum + '<br>';
+    document.querySelector('.task7').innerHTML += 'chetnie: ' + chetnie + '<br>';
+    document.querySelector('.task7').innerHTML += 'kvadrat: ' + arr;
+</script>
+
+</html>
